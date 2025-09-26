@@ -1,0 +1,12 @@
+# Dati di Docker
+postgres_data/
+
+# File di sistema
+.DS_Store
+
+# File di Python
+__pycache__/
+*.pyc
+
+# File di ambiente
+.env

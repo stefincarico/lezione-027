@@ -1,0 +1,2 @@
+django         # Il framework principale
+psycopg2-binary # Il "traduttore" che permette a Python/Django di parlare con PostgreSQL

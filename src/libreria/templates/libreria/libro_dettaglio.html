@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>{{ libro.titolo }}</title>
+</head>
+<body>
+    <h1>{{ libro.titolo }}</h1>
+    <h2>di {{ libro.autore }}</h2>
+    
+    {% if libro.data_pubblicazione %}
+        <p>Pubblicato il: {{ libro.data_pubblicazione }}</p>
+    {% else %}
+        <p>Data di pubblicazione non disponibile.</p>
+    {% endif %}
+
+    <hr>
+<hr>
+<a href="{% url 'modifica_libro' pk=libro.pk %}">Modifica questo libro</a>
+<br>
+<a href="{% url 'elimina_libro' pk=libro.pk %}">Elimina questo libro</a>
+<br>
+<a href="{% url 'lista_libri' %}">Torna all'elenco</a>
+</body>
+</html>

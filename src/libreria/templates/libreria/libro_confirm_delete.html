@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Conferma Eliminazione</title>
+</head>
+<body>
+    <h1>Sei sicuro di voler eliminare?</h1>
+    
+    <p>Stai per eliminare definitivamente il libro: <strong>{{ libro.titolo }}</strong></p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sì, elimina</button>
+        <a href="{% url 'dettaglio_libro' pk=libro.pk %}">Annulla</a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,66 @@
+### Checklist: Avvio Progetto Docker
+
+---
+
+#### ✅ **Passo 1: Avvia Docker Desktop**
+
+*   **Azione:** Apri l'applicazione Docker Desktop sul tuo Mac.
+*   **Verifica:** Attendi che l'icona di Docker nella barra dei menu diventi stabile e verde. Questo indica che il "motore" di Docker (Docker Engine) è pronto.
+
+---
+
+#### 🖥️ **Passo 2: Apri il Terminale e vai alla Cartella del Progetto**
+
+*   **Azione:** Apri una finestra del terminale.
+*   **Comando:** Naviga fino alla directory del tuo progetto.
+    ```bash
+    cd /Volumes/ExtremeSSD/corso-dev/modulo-03/lezione-027
+    ```
+*   **Verifica:** Esegui `ls` per assicurarti di vedere i file `docker-compose.yml` e `Dockerfile`.
+
+---
+
+#### 🚀 **Passo 3: Avvia i Container (Server e Database)**
+
+*   **Azione:** Usa `docker-compose` per avviare tutti i servizi in background.
+*   **Comando:**
+    ```bash
+    docker-compose up -d
+    ```
+    *(Ricorda: `-d` sta per "detached", esegue in background).*
+*   **Verifica:**
+    1.  Il terminale dovrebbe mostrare che i container `django_backend` e `postgres_db` sono stati creati (`created`) e avviati (`started`).
+    2.  Esegui `docker-compose ps` per controllare lo stato. Entrambi i servizi devono risultare `Up` o `running`.
+
+---
+
+#### 📝 **Passo 4: Controlla i Log del Server (Consigliato)**
+
+*   **Azione:** Assicurati che il server Django sia partito senza errori.
+*   **Comando:**
+    ```bash
+    docker-compose logs backend
+    ```
+*   **Verifica:** L'output dovrebbe mostrare una riga simile a `Starting development server at http://0.0.0.0:8000/` e non dovrebbero esserci errori evidenti.
+
+---
+
+#### 🌐 **Passo 5: Visita la Pagina Web**
+
+*   **Azione:** Apri il tuo browser preferito (Chrome, Firefox, Safari, etc.).
+*   **Indirizzo:** Digita uno dei seguenti indirizzi nella barra degli URL:
+    *   `http://localhost:8000`
+    *   `http://127.0.0.1:8000`
+*   **Verifica:** Dovresti vedere la pagina principale della tua applicazione Django.
+
+---
+
+### 셧 **Come Fermare Tutto**
+
+Quando hai finito di lavorare, per spegnere l'ambiente in modo pulito:
+
+*   **Comando:** Dalla stessa cartella del progetto, esegui:
+    ```bash
+    docker-compose down
+    ```
+*   **Cosa fa:** Questo comando ferma e rimuove i container. La cartella `postgres_data` con i dati del database **non verrà cancellata**.

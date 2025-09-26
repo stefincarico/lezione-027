@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Elenco Libri</title>
+</head>
+<body>
+    <h1>La Nostra Fantastica Libreria</h1>
+
+    <a href="{% url 'crea_libro' %}">Aggiungi un libro</a>
+
+<ul>
+    {% for libro in elenco_libri %}
+        <li>
+            <strong>
+                <a href="{% url 'dettaglio_libro' pk=libro.pk %}">
+                    {{ libro.titolo }}
+                </a>
+            </strong> di {{ libro.autore }}
+        </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
