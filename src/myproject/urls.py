@@ -19,5 +19,7 @@ from django.urls import path, include # Aggiungi 'include'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('libreria/', include('libreria.urls')), # Inoltra le richieste a libreria.urls
+    path('', include('libreria.urls')), # La homepage ora mostra la lista dei libri
 ]

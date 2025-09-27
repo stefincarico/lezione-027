@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404,redirect
 
 from .forms import LibroForm
+from django.contrib.auth.decorators import login_required
 from .models import Libro
 
 def lista_libri(request):
@@ -25,6 +26,7 @@ def dettaglio_libro(request, pk):
     return render(request, 'libreria/libro_dettaglio.html', context)
 
 # --- NUOVA VIEW ---
+@login_required
 def crea_libro(request):
     # Logica per la richiesta POST (invio dati)
     if request.method == 'POST':
@@ -43,6 +45,7 @@ def crea_libro(request):
 
 
 # --- VIEW DI AGGIORNAMENTO ---
+@login_required
 def modifica_libro(request, pk):
     libro = get_object_or_404(Libro, pk=pk)
     if request.method == 'POST':
@@ -59,6 +62,7 @@ def modifica_libro(request, pk):
     return render(request, 'libreria/libro_form.html', context)
 
 # --- VIEW DI ELIMINAZIONE ---
+@login_required
 def elimina_libro(request, pk):
     libro = get_object_or_404(Libro, pk=pk)
     if request.method == 'POST':

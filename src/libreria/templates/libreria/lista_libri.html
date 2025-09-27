@@ -6,6 +6,20 @@
 <body>
     <h1>La Nostra Fantastica Libreria</h1>
 
+    {% if user.is_authenticated %}
+        <p>
+            Ciao, {{ user.username }}!
+                            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="link-button">Logout</button>
+                </form>
+        </p>
+    {% else %}
+        <p>
+            <a href="{% url 'login' %}?next={{ request.path }}">Login</a>
+        </p>
+    {% endif %}
+
     <a href="{% url 'crea_libro' %}">Aggiungi un libro</a>
 
 <ul>
